@@ -1,19 +1,19 @@
-export const addJokes = async (jokeInput) => {
-  const newJoke = {
-    text: jokeInput,
-    told: false,
-  };
+export const getAllJokes = () => {
+  return fetch("http://localhost:8088/jokes").then((response) =>
+    response.json()
+  );
+};
 
+export const addJokes = (text) => {
   return fetch("http://localhost:8088/jokes", {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(newJoke),
+    body: JSON.stringify({ text, told: false }),
   }).then((response) => response.json());
-
-  //setUserInput("");
 };
+
 // import { useState } from "react";
 
 // export const postJokes = () => {
