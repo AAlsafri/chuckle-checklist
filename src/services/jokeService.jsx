@@ -14,6 +14,23 @@ export const addJokes = (text) => {
   }).then((response) => response.json());
 };
 
+export const updateJoke = async (joke) => {
+  const response = await fetch(`http://localhost:8088/jokes/${joke.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(joke),
+  });
+  return response.json();
+};
+
+export const deleteJoke = async (id) => {
+  await fetch(`http://localhost:8088/jokes/${id}`, {
+    method: "DELETE",
+  });
+};
+
 // import { useState } from "react";
 
 // export const postJokes = () => {
